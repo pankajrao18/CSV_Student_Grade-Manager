@@ -80,7 +80,7 @@ def read_students(file_name):
     return students
 
 
-def write_students(file_name, students, append):
+def write_students(file_name, students, append = False):
     mode = "a" if append else "w"
 
     with open(file_name, mode, newline="") as file:
@@ -94,7 +94,7 @@ def write_students(file_name, students, append):
 
         for s in students:
             writer.writerow([
-                s.sid,
+                s.student_id,
                 s.name,
                 s.m1,
                 s.m2,
@@ -121,7 +121,7 @@ def main():
             calc.calculate(s)
             valid_students.append(s)
         except InvalidMarksError as e:
-            print("Error for Student", s.sid, "-", s.name + ":", e)
+            print("Error for Student", s.student_id, "-", s.name + ":", e)
 
     if valid_students:
         write_students(output_file, valid_students, append=False)
@@ -129,7 +129,7 @@ def main():
     else:
         print("No valid students to save.")
 
-    add_more = input("Do you want to add a new student manually? (y/n): ").lower()
+    add_more = input("Do you want to add a new student manually? (yes/no): ").lower()
 
     if add_more == "y":
         try:
