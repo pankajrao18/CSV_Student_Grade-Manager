@@ -19,4 +19,5 @@ A simple python project to manage student grades using CSV.
 1. Install Python 3
 2. Run command:
    ```bash
+   python grade_manager.py
    
